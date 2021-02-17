@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Contact {
 	
@@ -8,10 +9,12 @@ public class Contact {
 	private String state;
 	private String email;
 	private int zipCode;
-	private int phoneNumber;
+	private long phoneNumber;
+	
+	public static Scanner personContact = new Scanner(System.in);
 	
 	public Contact(String firstName, String lastName, String address, String city, String state, String email,
-			int zipCode, int phoneNumber) {
+			int zipCode, long phoneNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -78,14 +81,39 @@ public class Contact {
 		this.zipCode = zipCode;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	public void creatingContact() {
+		System.out.println("Enter your first name : ");
+		setFirstName(personContact.next());
+		System.out.println("Enter your last name : ");
+		setLastName(personContact.next());
+		System.out.println("Enter your address : ");
+		setAddress(personContact.nextLine());
+		setAddress(personContact.nextLine());
+		System.out.println("Enter your city : ");
+		setCity(personContact.next());
+		System.out.println("Enter your State : ");
+		setState(personContact.next());
+		System.out.println("Enter your zip code : ");
+		setZipCode(personContact.nextInt());
+		System.out.println("Enter your phone number : ");
+		setPhoneNumber(personContact.nextLong());
+		System.out.println("Enter your email address : ");
+		setEmail(personContact.next());
+
+	}
 	
+	@Override
+	public String toString() {
+		return "[firstName =" + firstName + ", lastName =" + lastName + ", city =" + city + ", state =" + state
+				+ ", zip =" + zipCode + ", phone =" + phoneNumber + ", email address =" + email + "]\n";
+	}
 	
 }
