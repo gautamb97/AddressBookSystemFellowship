@@ -10,6 +10,7 @@ public class AddressBookSystemMain {
 		System.out.println("1.Add Contact");
 		System.out.println("2.Display Contacts");
 		System.out.println("3.Edit an exixting contact");
+		System.out.println("4.Delete an existing contact");
 		int option = personContact.nextInt();
 		switch (option) {
 		case 1:
@@ -20,6 +21,9 @@ public class AddressBookSystemMain {
 			break;
 		case 3:
 			editContact();
+			break;
+		case 4:
+			deleteContact();
 		default:
 			break;
 		}
@@ -66,6 +70,18 @@ public class AddressBookSystemMain {
 
 	public void displayContact() {
 		System.out.println(listOfContact);
+	}
+	
+	public void deleteContact() {
+		System.out.println("Enter name for delete that contact");
+		String name = personContact.next();
+		for (int person = 0; person < listOfContact.size(); person++) {
+			Contact contact = (Contact) listOfContact.get(person);
+			if (name.equals(contact.getFirstName())) {
+				listOfContact.remove(person);
+			} else
+				System.out.println("There is no data exist by this name");
+		}
 	}
 
 	public static void main(String[] args) {
