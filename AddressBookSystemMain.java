@@ -71,7 +71,7 @@ public class AddressBookSystemMain {
 	public void displayContact() {
 		System.out.println(listOfContact);
 	}
-	
+
 	public void deleteContact() {
 		System.out.println("Enter name for delete that contact");
 		String name = personContact.next();
