@@ -11,6 +11,7 @@ public class AddressBookSystemMain {
 		System.out.println("2.Display Contacts");
 		System.out.println("3.Edit an exixting contact");
 		System.out.println("4.Delete an existing contact");
+		System.out.println("5.Exit");
 		int option = personContact.nextInt();
 		switch (option) {
 		case 1:
@@ -20,17 +21,24 @@ public class AddressBookSystemMain {
 			displayContact();
 			break;
 		case 3:
-			editContact();
+				editContact();
 			break;
 		case 4:
 			deleteContact();
+			break;
+		case 5:
+			System.exit(0);
+			break;
 		default:
 			break;
 		}
 		takingOption();
+
 	}
 
 	public void addingContact() {
+		 Contact contact = new Contact("firstName", "lastName", "address", "city",
+		 "state", "email address", 0, 0);
 		contact.creatingContact();
 		contact.getFirstName();
 		contact.getLastName();
@@ -46,9 +54,16 @@ public class AddressBookSystemMain {
 	public void editContact() {
 		System.out.println("Enter name for edit :");
 		String name = personContact.next();
-		for (int check = 0; check < listOfContact.size(); check++) {
-			Contact contact = (Contact) listOfContact.get(check);
+		int flag = 0;
+		for ( int check =0; check<listOfContact.size(); check++) {
+			Contact contact = (Contact)listOfContact.get(check);
 			if (name.equals(contact.getFirstName())) {
+				flag = 1;
+			}
+		}
+		if (flag == 0) {
+			System.out.println("There is contact by this nane");
+		}else {
 				System.out.println("Enter your new address : ");
 				contact.setAddress(personContact.nextLine());
 				contact.setAddress(personContact.nextLine());
@@ -62,10 +77,7 @@ public class AddressBookSystemMain {
 				contact.setPhoneNumber(personContact.nextLong());
 				System.out.println("Enter your new email address : ");
 				contact.setEmail(personContact.next());
-				listOfContact.add(contact);
-			} else
-				System.out.println("There is no data exist by this name");
-		}
+			} 	
 	}
 
 	public void displayContact() {
